@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 // Array
 $bikes = array("Kawasaki", "Yamaha", "Honda", "Suzuki", "Ducati");
 
@@ -46,9 +48,21 @@ if(mt_rand(0,100) <= 20){
     $ageArray[$ageArray_random] = "edited";
     $donald->$person_random = "edited";
 
-    // When executed print results
-    echo print_r($bikes)."<br>";
-    echo print_r($ageArray)."<br>";
-    print_r($donald);
+    // Call function to store changes in session
+    storeChanges($bikes, $ageArray, $donald);
+    
+    // When executed print message
+    echo "<p>DATA UPDATED</p>";
 }
+
+function storeChanges($x,$y,$z){
+    // Store changes to session superglobal
+    $_SESSION['array'] = $x;
+    $_SESSION['assoc'] = $y;
+    $_SESSION['object'] = $z;
+}
+
+echo print_r($_SESSION['array'])."<br>";
+echo print_r($_SESSION['assoc'])."<br>";
+print_r($_SESSION['object']);
 ?>
