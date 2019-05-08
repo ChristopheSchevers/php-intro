@@ -3,7 +3,7 @@
 $bikes = array("Kawasaki", "Yamaha", "Honda", "Suzuki", "Ducati");
 
 // Associative array
-$age = array("Ted"=>42, "Jeffrey"=>34, "John"=>52);
+$ageArray = array("Ted"=>42, "Jeffrey"=>34, "John"=>52);
 
 // Object
 class Person {
@@ -18,4 +18,16 @@ class Person {
 $me = new Person("Christophe","Schevers",30,"Lummen");
 
 var_dump($me);
+
+// For loop
+for ($i = 0; $i < 1; $i++){
+    array_push($bikes, "KTM");
+    print_r($bikes);
+
+    $ageArray["Ed"] = 77;
+    print_r($ageArray);
+
+    $donald = new Person("Donald","Trump", 72, "New York");
+    print_r($donald);
+}
 ?>
