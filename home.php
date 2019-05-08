@@ -64,5 +64,26 @@ function storeChanges($x,$y,$z){
 
 echo print_r($_SESSION['array'])."<br>";
 echo print_r($_SESSION['assoc'])."<br>";
-print_r($_SESSION['object']);
+echo print_r($_SESSION['object'])."<br>";
+
+// Blackjack game
+class Blackjack {
+    var $hand = [];
+    var $score;
+
+    function Hit() {
+        array_push($this->hand,mt_rand(1,11));
+        $this->score = array_sum($this->hand);
+    }
+
+    function Stand() {
+        
+    }
+
+    function Surrender() {
+        echo "You lost!";
+    }
+}
+
+echo "<form action='game.php'><input type='submit' value='Play Blackjack'/></form>"
 ?>
