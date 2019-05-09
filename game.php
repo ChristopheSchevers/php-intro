@@ -2,7 +2,7 @@
 // Require page with Blackjack class once
 require_once('home.php');
 
-// If the session variable for the play is not yet created, the class will be instantiated for the player and dealer variables
+// If the session variable for the player is not yet created, the class will be instantiated for the player and dealer variables
 if(!isset($_SESSION['player'])) {
     $player = new Blackjack;
     $dealer = new Blackjack;
