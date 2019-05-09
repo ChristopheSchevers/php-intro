@@ -23,15 +23,15 @@ $me = new Person("Christophe","Schevers",30,"Lummen");
 for ($i = 0; $i < 1; $i++){
     // Push new item to bikes variable and print result
     array_push($bikes, "KTM");
-    echo print_r($bikes)."<br>";
+    // echo print_r($bikes)."<br>";
 
     // Declare new key and value to ageArray variable and print result
     $ageArray["Ed"] = 77;
-    echo print_r($ageArray)."<br>";
+    // echo print_r($ageArray)."<br>";
 
     // Instantiate new Person object and print result
     $donald = new Person("Donald","Trump", 72, "New York");
-    echo print_r($donald)."<br>";
+    // echo print_r($donald)."<br>";
 }
 
 // If statement which has 20% chance to be executed
@@ -52,7 +52,7 @@ if(mt_rand(0,100) <= 20){
     storeChanges($bikes, $ageArray, $donald);
     
     // When executed print message
-    echo "<p>DATA UPDATED</p>";
+    // echo "<p>DATA UPDATED</p>";
 }
 
 function storeChanges($x,$y,$z){
@@ -62,14 +62,15 @@ function storeChanges($x,$y,$z){
     $_SESSION['object'] = $z;
 }
 
-echo print_r($_SESSION['array'])."<br>";
-echo print_r($_SESSION['assoc'])."<br>";
-echo print_r($_SESSION['object'])."<br>";
+// echo print_r($_SESSION['array'])."<br>";
+// echo print_r($_SESSION['assoc'])."<br>";
+// echo print_r($_SESSION['object'])."<br>";
 
 // Blackjack game
 class Blackjack {
     var $hand = [];
     var $score;
+    var $turn = true;
 
     function Hit() {
         array_push($this->hand,mt_rand(1,11));
@@ -77,13 +78,13 @@ class Blackjack {
     }
 
     function Stand() {
-        
+        $this->turn = false;
     }
 
     function Surrender() {
-        echo "You lost!";
+        $_SESSION['msg'] = "Dealer wins!";
     }
 }
 
-echo "<form action='game.php'><input type='submit' value='Play Blackjack'/></form>"
+echo "<form action='game.php' method='POST'><input type='submit' name='play' value='Play Blackjack'/></form>";
 ?>
