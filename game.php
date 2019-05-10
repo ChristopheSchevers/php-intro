@@ -47,7 +47,7 @@ if(isset($_POST['stand'])){
         $dealer->Hit();
     } while($dealer->score < 15);
 
-    // Dealer will eventually ends his turn. New object data will be serialized and stored in session variable
+    // Dealer will eventually end his turn. New object data will be serialized and stored in session variable
     $dealer->Stand();
 
     $_SESSION['dealer'] = serialize($dealer);
