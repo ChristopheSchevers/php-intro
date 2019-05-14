@@ -18,7 +18,7 @@ session_start();
             <h1 class="card-title text-center mt-4">Setup</h1>
             <div class="card-body p-5">
                 <form action="result.php" method="post">
-                    <div class="form-group px-5">
+                    <div class="form-group px-5 mb-4">
                         <label for="tvShows">Top 5 tv shows</label>
                         <input class="form-control p-2 my-2" type="text" name="tvShows[0]" required>
                         <input class="form-control p-2 my-2" type="text" name="tvShows[1]" required>
@@ -26,7 +26,7 @@ session_start();
                         <input class="form-control p-2 my-2" type="text" name="tvShows[3]" required>
                         <input class="form-control p-2 my-2" type="text" name="tvShows[4]" required>
                     </div>
-                    <div class="form-group px-5">
+                    <div class="form-group px-5 mb-4">
                         <label for="movies">Top 5 movies</label>
                         <input class="form-control p-2 my-2" type="text" name="movies[0]" required>
                         <input class="form-control p-2 my-2" type="text" name="movies[1]" required>
@@ -34,16 +34,16 @@ session_start();
                         <input class="form-control p-2 my-2" type="text" name="movies[3]" required>
                         <input class="form-control p-2 my-2" type="text" name="movies[4]" required>
                     </div>
-                    <div class="form-group px-5">
+                    <div class="form-group px-5 mb-4">
                         <label for="favCountry">Favorite country</label>
                         <input class="form-control p-2" type="text" name="favCountry" required>
                     </div>
-                    <div class="form-group px-5">
+                    <div class="form-group px-5 mb-4">
                         <label for="worstMovie">Worst movie</label>
                         <input class="form-control p-2" type="text" name="worstMovie" required>
                     </div>
                     <div class="row justify-content-center">
-                        <button type="submit" name="submit-btn">Submit</button>
+                        <button class="btn btn-primary" type="submit" name="submit-btn">Submit</button>
                     </div>
                 </form>
             </div>

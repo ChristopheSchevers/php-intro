@@ -8,47 +8,7 @@ if(isset($_POST['tvShows'], $_POST['movies'], $_POST['favCountry'], $_POST['wors
     $_SESSION['movie'] = $_POST['worstMovie'];
 }
 
-$tvshows = $_SESSION['tvShows'];
 $movies = $_SESSION['movies'];
-$favCountry = $_SESSION['country'];
-$worstMovie = $_SESSION['movie'];
-
-class Superdata{
-    public $obj1;
-    public $obj2;
-    public $obj3;
-    public $obj4;
-}
-
-class Toplists {
-    public $data;
-}
-
-$inputshow = new Toplists;
-$inputshow->data = $tvshows;
-$_SESSION['obj1'] = serialize($inputshow);
-
-$inputmovie = new Toplists;
-$inputmovie->data = $movies;
-$_SESSION['obj2'] = serialize($inputmovie);
-
-
-$inputcountry = new Toplists;
-$inputcountry->data = $favCountry;
-$_SESSION['obj3'] = serialize($inputcountry);
-
-
-$inputwmovie = new Toplists;
-$inputwmovie->data = $worstMovie;
-$_SESSION['obj4'] = serialize($inputwmovie);
-
-$data_object = new Superdata;
-$data_object->obj1 = unserialize($_SESSION['obj1']);
-$data_object->obj2 = unserialize($_SESSION['obj2']);
-$data_object->obj3 = unserialize($_SESSION['obj3']);
-$data_object->obj4 = unserialize($_SESSION['obj4']);
-$_SESSION['data_object'] = serialize($data_object);
-
 ?>
 
 <!DOCTYPE html>
@@ -65,12 +25,12 @@ $_SESSION['data_object'] = serialize($data_object);
         <div class="card m-5">
         <h1 class="card-title text-center mt-4">Results</h1>
             <div class="card-body p-5">
-            <ul class="nav nav-tabs">
+                <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active">Top 5 tv shows</a>
+                        <a href="result.php" class="nav-link">Top 5 tv shows</a>
                     </li>
                     <li class="nav-item">
-                        <a href="result1.php" class="nav-link">Top 5 movies</a>
+                        <a href="#" class="nav-link active">Top 5 movies</a>
                     </li>
                     <li class="nav-item">
                         <a href="result2.php" class="nav-link">Favorite country</a>
@@ -83,12 +43,12 @@ $_SESSION['data_object'] = serialize($data_object);
                     <table class="table text-center">
                         <thead class="thead-dark">
                             <th scope="col">#</th>
-                            <th scope="col">TV show</th>
+                            <th scope="col">Movie</th>
                         </thead>
                         <tbody>
-                            <?php $i = 0; foreach($tvshows as $show){
+                            <?php $i = 0; foreach($movies as $movie){
                                 $i++;
-                                echo '<tr><th scope="row">'.$i.'</th><td>'.$show.'</td></tr>';
+                                echo '<tr><th scope="row">'.$i.'</th><td>'.$movie.'</td></tr>';
                             } ?>
                         </tbody>
                     </table>
