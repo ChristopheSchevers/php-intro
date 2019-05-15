@@ -1,8 +1,20 @@
 <?php
 session_start();
 
-$data_object = unserialize($_SESSION['data_object']);
+class Superdata{
+    public $obj1;
+    public $obj2;
+    public $obj3;
+    public $obj4;
+}
 
-echo $data_object->obj1;
-// print_r($data_object);
+class Toplists {
+    public $data;
+}
+
+$data_object = unserialize($_SESSION['data_object']);
 ?>
+
+<pre>
+    <?php print_r($data_object); ?>    
+</pre>

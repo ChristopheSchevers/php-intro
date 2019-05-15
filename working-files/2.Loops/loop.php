@@ -7,7 +7,7 @@ $array = [
     ["tv-show" => "Bojack Horseman", "rating" => 4],
     ["tv-show" => "Mindhunter", "rating" => 4],
     ["tv-show" => "Hannibal", "rating" => 4],
-    ["tv-show" => "Adventure Time", "rating" => 3],
+    ["tv-show" => "Adventure Time", "rating" => 3]
 ];
 ?>
 
