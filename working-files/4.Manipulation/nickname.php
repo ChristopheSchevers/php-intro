@@ -43,6 +43,28 @@ function convertUpperLower($c){
         return strtoupper($c);
     }
 }
+
+$coloredName = colorSpan($output);
+
+// Function to put each character in span element
+function colorSpan($inputname){
+    $arr = str_split($inputname);
+    $newarr = [];
+
+    $basecolor = [mt_rand(0,100),mt_rand(0,100),mt_rand(0,100)];    // Creates array with rgb values
+    $colorIndex = mt_rand(0,2);                                     // Creates random index to pick r,g or b
+    
+    foreach($arr as $char){
+        $basecolor[$colorIndex] += 10;      // Increases r,g or b value with each character in nickname
+
+        $rgb = implode(",", $basecolor);    // Creates string to put between rgb parenthese in style attribute
+
+        $char = '<span style="color: rgb('.$rgb.')">'.$char.'</span>';
+        array_push($newarr, $char);
+    }
+    
+    return implode("", $newarr);
+}
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +90,7 @@ function convertUpperLower($c){
                         <button class="btn btn-primary" type="submit" name="submit-btn">Submit</button>
                     </div>
                 </form>
-                <p class="text-center"><?php echo $output; ?></p>
+                <p class="text-center mt-5"><?php echo $coloredName; ?></p>
             </div>
         </div>
     </div>
