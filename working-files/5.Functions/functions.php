@@ -76,6 +76,24 @@ function object_generate(){
 }
 
 function object_revert($obj){
+    // Takes both arr arrays and merges them back into one array
+    $bikes = array_merge($obj->arr1,$obj->arr2);
+    // Removes both arr arrays from object
+    unset($obj->arr1);
+    unset($obj->arr2);
+
+    $ageArray = [];
     
+    foreach($obj as $key => $value){    // Loops through object
+        // If key does not match original keys, key value pair will be pushed to array and will be removed from object
+        if($key != 'firstname' && $key != 'lastname' &&$key != 'age' && $key != 'city'){
+            $ageArray[$key] = $value;
+            unset($obj->$key);
+        }
+    }
+    // Store restored object, array and associative array into result array
+    $result = array($obj,$bikes,$ageArray);
+
+    return $result;
 }
 ?>

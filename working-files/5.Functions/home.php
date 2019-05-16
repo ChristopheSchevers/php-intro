@@ -18,7 +18,11 @@ if(isset($_POST['object-btn'])){
 
 // Call object_revert function
 if(isset($_POST['revert-btn'])){
-    object_revert($object);
+    if(isset($object)){
+        object_revert($object);
+    } else {
+        $object = object_revert(object_generate());
+    }
 }
 ?>
 
