@@ -46,7 +46,7 @@ function convertUpperLower($c){
 
 $coloredName = colorSpan($output);
 
-// Function to put each character in span element
+// Function to put each character in span element and unique color
 function colorSpan($inputname){
     $arr = str_split($inputname);
     $newarr = [];
@@ -79,7 +79,7 @@ function colorSpan($inputname){
 <body>
     <div class="container col-8 offset-2">
         <div class="card m-5">
-            <h1 class="card-title text-center mt-4">Nickname Generator</h1>
+            <h1 class="card-title text-center mt-4">Cool Nickname Generator</h1>
             <div class="card-body p-5">
                 <form action="" method="post">
                     <div class="form-group px-5 mb-4">
