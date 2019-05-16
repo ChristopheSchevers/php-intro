@@ -1,6 +1,25 @@
 <?php
+ini_set('display_errors', 'On');
+error_reporting(E_ALL);
 require('security.php');
-require('functions.php');
+include('functions.php');
+
+
+// Call nickname_generate function
+if(isset($_POST['nickname-btn'])){
+    $name = $_POST['nickname'];
+    $styled_nickname = nickname_generate($name);
+}
+
+// Call object_generate function
+if(isset($_POST['object-btn'])){
+    $object = object_generate();
+}
+
+// Call object_revert function
+if(isset($_POST['revert-btn'])){
+    object_revert($object);
+}
 ?>
 
 <!DOCTYPE html>
@@ -13,26 +32,50 @@ require('functions.php');
     <title>Home page</title>
 </head>
 <body>
-    <div class="container col-8 offset-2 mt-4">
+    <div class="container col-8 offset-2 my-5">
         <div class="card">
             <div class="card-body">
                 <div class="row justify-content-around">
                     <div class="card border border-dark m-3">
-                        <div class="card-body">
-                            <button type="submit" class="btn btn-secondary">Generate object</button>
+                        <div class="card-body d-flex align-items-center">
+                            <form action="" method="post">
+                                <button type="submit" class="btn btn-secondary" name="object-btn">Generate object</button>
+                            </form>
                         </div>
                     </div>
                     <div class="card border border-dark m-3">
-                        <div class="card-body">
-                            <button type="submit" class="btn btn-secondary">Revert object</button>                        
+                        <div class="card-body d-flex align-items-center">
+                            <form action="" method="post">
+                                <button type="submit" class="btn btn-secondary" name="revert-btn">Revert object</button>
+                            </form>
                         </div>
                     </div>
                     <div class="card border border-dark m-3">
-                        <div class="card-body">
-                            <button type="submit" class="btn btn-secondary">Get a nickname</button>                        
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <form action="" method="post">
+                                <div class="form-group m-0">
+                                    <input type="text" name="nickname" class="form-control text-center p-2 mb-3">
+                                    <div class="row justify-content-center">
+                                        <button type="submit" class="btn btn-secondary" name="nickname-btn">Get a nickname</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
+
+                <?php
+                if(isset($styled_nickname)){
+                    echo '<div class="row justify-content-center my-4"><p>'.$styled_nickname.'</p></div>';
+                }
+
+                if(isset($object)){
+                    echo '<div class="row justify-content-center m-4"><pre>';
+                    print_r($object);
+                    echo '</pre></div>';
+                }
+                ?>                
+                
             </div>
         </div>
     </div>
