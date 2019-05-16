@@ -58,7 +58,7 @@ if(isset($_POST['revert-btn'])){
                         <div class="card-body d-flex flex-column justify-content-center">
                             <form action="" method="post">
                                 <div class="form-group m-0">
-                                    <input type="text" name="nickname" class="form-control text-center p-2 mb-3">
+                                    <input type="text" name="nickname" class="form-control text-center p-2 mb-3" required>
                                     <div class="row justify-content-center">
                                         <button type="submit" class="btn btn-secondary" name="nickname-btn">Get a nickname</button>
                                     </div>
