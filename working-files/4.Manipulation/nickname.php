@@ -2,7 +2,7 @@
 // Takes in user input from form
 $input = $_POST['nickname'];
 
-$name = strrev(ucfirst(strrev(trim($input))));  // Capitalizes the last character of name
+$name = "x".strrev(ucfirst(strrev(trim($input))));  // Capitalizes the last character of name
 $randomIndex = randomIndex($name);
 $randomChar = $name[$randomIndex];
 $toggledCase = convertUpperLower($randomChar);
@@ -11,7 +11,7 @@ $arr[$randomIndex] = $toggledCase;              // Replaces character with the t
 $newname = implode("",$arr);                    // Puts the array back to string
 
 // Puts all data together in one output string
-$output = "[".randomString(mt_rand(2,4))."]x".str_pad($newname, strlen($newname)+4, "--", STR_PAD_BOTH);
+$output = "[".randomString(mt_rand(2,4))."]".str_pad($newname, strlen($newname)+4, "--", STR_PAD_BOTH);
 
 // Function to create random string with length between 2 and 4 characters
 function randomString($length){
@@ -90,7 +90,7 @@ function colorSpan($inputname){
                         <button class="btn btn-primary" type="submit" name="submit-btn">Submit</button>
                     </div>
                 </form>
-                <p class="text-center mt-5"><?php echo $coloredName; ?></p>
+                <p class="text-center mt-5"><?php if(isset($input)) { echo $coloredName; } ?></p>
             </div>
         </div>
     </div>
