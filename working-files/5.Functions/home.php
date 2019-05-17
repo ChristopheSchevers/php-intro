@@ -4,6 +4,8 @@ error_reporting(E_ALL);
 require('security.php');
 include('functions.php');
 
+// When security form gets submitted
+
 
 // Call nickname_generate function
 if(isset($_POST['nickname-btn'])){
@@ -35,8 +37,8 @@ if(isset($_POST['revert-btn'])){
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Home page</title>
 </head>
-<body>
-    <div class="container col-8 offset-2 my-5">
+<body class="d-flex align-items-center">
+    <div class="container col-8 offset-2" name="home-page">
         <div class="card">
             <div class="card-body">
                 <div class="row justify-content-around">
