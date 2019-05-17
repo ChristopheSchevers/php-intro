@@ -1,11 +1,27 @@
 <?php
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
+
+session_start();
+
 require('security.php');
 include('functions.php');
 
-// When security form gets submitted
+if(isset($_SESSION['answer'])){
+    $answer = $_SESSION['answer'];
 
+    if($answer == 'no'){
+        $_SESSION['hide-home'] = "";
+    } elseif($answer == 'yes') {
+        $nicknameArray = ['Fluffball','Snowball','Buzz','Goose','Pointdexter','Faze','Ozzy','Kraut','Widowmaker','Predator','Spacejam','Spacex'];
+    
+        $random_nickname = nickname_generate($nicknameArray[mt_rand(0,count($nicknameArray)-1)]);
+
+        $_SESSION['random-nick'] = $random_nickname;
+
+        unset($answer);
+    }
+}
 
 // Call nickname_generate function
 if(isset($_POST['nickname-btn'])){
@@ -26,6 +42,13 @@ if(isset($_POST['revert-btn'])){
         $object = object_revert(object_generate());
     }
 }
+
+// Reset
+if(isset($_POST['reset-btn'])){
+    session_destroy();
+}
+
+// die(print_r($_SESSION));
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +61,7 @@ if(isset($_POST['revert-btn'])){
     <title>Home page</title>
 </head>
 <body class="d-flex align-items-center">
-    <div class="container col-8 offset-2" name="home-page">
+    <div class="container col-8 offset-2" <?php echo !isset($_SESSION['hide-home']) ? "hidden" : $_SESSION['hide-home']; ?> >
         <div class="card">
             <div class="card-body">
                 <div class="row justify-content-around">
@@ -82,6 +105,9 @@ if(isset($_POST['revert-btn'])){
                 }
                 ?>                
                 
+                <form action="" method="post">
+                    <button type="submit" name="reset-btn">Reset</button>
+                </form>
             </div>
         </div>
     </div>

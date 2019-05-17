@@ -1,12 +1,25 @@
 <?php
+if(isset($_SESSION['random-nick'])){
+    $random_nickname = $_SESSION['random-nick'];
+}
 
+// When security form gets submitted
+if(isset($_POST['security-btn'])){
+    $_SESSION ['answer'] = $_POST['radio-security'];
+}
+
+if(isset($_SESSION['answer'])){
+    if($_SESSION['answer'] == 'no'){
+        $_SESSION['hide-security'] = "hidden";
+    }
+}
 ?>
 
 <body class="d-flex align-items-center">
-    <div class="container col-8 offset-2" name="security-page">
+    <div class="container col-8 offset-2" name="security-page" <?php echo !isset($_SESSION['hide-security']) ? "" : $_SESSION['hide-security']; ?>>
         <div class="card p-5">
             <div class="card-body">
-                <form action="home.php" method="post">
+                <form action="" method="post">
                     <div class="form-group">
                         <div class="row text-center">
                             <p>Are you a bot from the future coming to exterminate the human race and are just here for a cool nickname?</p>
@@ -26,6 +39,12 @@
                         </div>
                     </div>
                 </form>
+
+                <?php
+                if(isset($random_nickname)){
+                    echo '<div class="row justify-content-center my-4"><p>'.$random_nickname.'</p></div>';
+                }
+                ?>
             </div>
         </div>
     </div>
