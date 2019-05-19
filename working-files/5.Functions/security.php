@@ -1,18 +1,5 @@
 <?php
-if(isset($_SESSION['random-nick'])){
-    $random_nickname = $_SESSION['random-nick'];
-}
 
-// When security form gets submitted
-if(isset($_POST['security-btn'])){
-    $_SESSION ['answer'] = $_POST['radio-security'];
-}
-
-if(isset($_SESSION['answer'])){
-    if($_SESSION['answer'] == 'no'){
-        $_SESSION['hide-security'] = "hidden";
-    }
-}
 ?>
 
 <body class="d-flex align-items-center">

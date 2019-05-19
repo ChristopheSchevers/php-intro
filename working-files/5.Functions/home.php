@@ -1,27 +1,37 @@
 <?php
-ini_set('display_errors', 'On');
-error_reporting(E_ALL);
-
 session_start();
-
-require('security.php');
 include('functions.php');
 
-if(isset($_SESSION['answer'])){
-    $answer = $_SESSION['answer'];
+// Reset
+if(isset($_POST['reset-btn'])){
+    session_destroy();
+    header('location: home.php');
+}
 
-    if($answer == 'no'){
+// Show random nickname if one is generated
+if(isset($_SESSION['random-nick'])){
+    $random_nickname = $_SESSION['random-nick'];
+}
+
+// When security form gets submitted
+if(isset($_POST['security-btn'])){
+    $_SESSION ['answer'] = $_POST['radio-security'];    // Store radio value in session
+    
+    $answer = $_SESSION['answer'];      // Store session in variable
+    
+    if($answer == 'no'){                // If answer is no, show home page and hide security page
         $_SESSION['hide-home'] = "";
-    } elseif($answer == 'yes') {
+        $_SESSION['hide-security'] = "hidden";
+    } elseif($answer == 'yes') {        // If answer is yes, pick random nickname and stylize it
         $nicknameArray = ['Fluffball','Snowball','Buzz','Goose','Pointdexter','Faze','Ozzy','Kraut','Widowmaker','Predator','Spacejam','Spacex'];
     
         $random_nickname = nickname_generate($nicknameArray[mt_rand(0,count($nicknameArray)-1)]);
-
+    
         $_SESSION['random-nick'] = $random_nickname;
-
-        unset($answer);
     }
 }
+
+require('security.php');    // Load security page
 
 // Call nickname_generate function
 if(isset($_POST['nickname-btn'])){
@@ -42,13 +52,6 @@ if(isset($_POST['revert-btn'])){
         $object = object_revert(object_generate());
     }
 }
-
-// Reset
-if(isset($_POST['reset-btn'])){
-    session_destroy();
-}
-
-// die(print_r($_SESSION));
 ?>
 
 <!DOCTYPE html>
@@ -105,9 +108,11 @@ if(isset($_POST['reset-btn'])){
                 }
                 ?>                
                 
-                <form action="" method="post">
-                    <button type="submit" name="reset-btn">Reset</button>
-                </form>
+                <div class="row justify-content-center mt-5">
+                    <form action="" method="post">
+                        <button type="submit" name="reset-btn" class="btn btn-secondary">Reset</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
